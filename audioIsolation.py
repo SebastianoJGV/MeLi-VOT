@@ -90,7 +90,7 @@ tg_input_df.head()
 
 for n in tqdm(range(len(tg_input_df)), desc="Overall Progress"):
     tg_row = tg_input_df.iloc[n]
-    print(str(tg_row))
+    #print(str(tg_row))
     barename = tg_row['barename']
     tgin = os.path.join(tg_row['dirname'], barename[0:4], barename[0:8], tg_row['fname'])
     audio_match = audio_input_df[audio_input_df['barename'] == barename[0:8]]
@@ -151,10 +151,10 @@ for n in tqdm(range(len(tg_input_df)), desc="Overall Progress"):
     outputpath = os.path.join(base_output, speaker_id, f"{speaker_id}_audio", f"{speaker_id}_clips_{suffix}")
 
     #os.makedirs(outputpath, exist_ok=True)
-    print('starting loop')
+    #print('starting loop')
     #print(tgin)
     for x in tqdm(range(len(tg[4])), desc=f"Extracting Clips", leave=False):
-        print('entering loop')
+        #print('entering loop')
         current_token = tgIsolatedPhones[x].mark
         #print(current_token)
         #print(targets)

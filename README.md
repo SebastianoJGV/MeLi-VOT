@@ -20,7 +20,17 @@ In the case of the `Pipfile` add in the line:
 In the case of the `requirement.txt` file add in the line:
 `setuptools==68.0.0`
 
+Here is the exact venv code I use to setup Dr.VOT personally, exclude the third line if you've already installed the requirements before
+
+```
+python3.9 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt 
+```
+To run Dr.VOT once your input files have been placed in `Dr.VOT/Data/raw`, open your terminal and cd to your Dr.VOT installation, then run `./run_script.sh`. Depending on the installation `run_script.sh` may not have execute permissions, so add permissions based off of your OS if necessary.
+
 This should fix the error package not found: boltons error that pops up if you don't have this specific version of setuptools installed.
 
 ## The Code
 Its not great code, and not exactly heavily commented. At the very least know that they are designed to be used sequentially. `plosiveisolater.py` is the first file, `audioIsolation.py` is the second, and `csvMerger.py` can be used once you have the CSV files from `plosiveisolater.py` in one directory per language.
+

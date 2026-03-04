@@ -30,19 +30,19 @@ def getContainingWord(phone_interval, word_tier):
             return j
     return None
 
-def getSpeechRate(tg_phones, word_interval):
+def getSpeechRate(tg_phones, tg_token):
     """
     Calculates the number of phones within 0.75s BEFORE the word starts
     and 0.75s AFTER the word ends, excluding the word's own duration.
     tg_phones is the input phone textgrid
-    word_interval is the exact word that contains tg_phones
+    tg_token is the exact word that contains tg_phones
     """
     # Define the two exclusion windows
-    pre_window_start = max(0, word_interval.minTime - 0.75)
-    pre_window_end = word_interval.minTime
+    pre_window_start = max(0, tg_token.minTime - 0.75)
+    pre_window_end = tg_token.minTime
     
-    post_window_start = word_interval.maxTime
-    post_window_end = word_interval.maxTime + 0.75
+    post_window_start = tg_token.maxTime
+    post_window_end = tg_token.maxTime + 0.75
     
     phone_count = 0
     silence_time = 0.0
@@ -131,7 +131,7 @@ def getIsolatedTokens(filepath, csvfilepath, tgout):
             following_token = str(tgPhones[x+1].mark) if (x + 1) < len(tgPhones) else "END_OF_FILE"
             preceding_token = str(tgPhones[x-1].mark) if x > 0 else "START_OF_FILE"
 
-            speech_rate = getSpeechRate(tgPhones, tgWords[word_index])
+            speech_rate = getSpeechRate(tgPhones, tgPhones[x])
 
             dictWriter.writerow({
                 'phone': str(tgPhones[x].mark), 

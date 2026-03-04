@@ -4,7 +4,7 @@ Suyuan MeLi VOT Dr.VOT Project
 ## Notes
 This code is built up by combining 3 different older projects, as such it is pretty badly coded at the moment. Some file paths are hardcoded within the scripts, others are adaptive, it will not work out of the box of other peoples setups!
 
-The project itself require Python 3.12, newest versions break some of the audio processing so make sure you're running this in Python 3.12. I reccomend using [pyenv](https://github.com/pyenv/pyenv) for version management if you don't already have something in place.
+The project itself require Python 3.12, newest versions break some of the audio processing so make sure you're running this in Python 3.12. I recommend using [pyenv](https://github.com/pyenv/pyenv) for version management if you don't already have something in place.
 
 The codes are written with the goal of preparing audio for Dr.VOT, however Dr.VOT itself is abandonware that will not work outside the box!
 

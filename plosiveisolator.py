@@ -111,7 +111,7 @@ def getIsolatedTokens(filepath, csvfilepath, tgout):
 
     #input("Press Enter to continue to the next file...")
 
-    fieldname = ['phone', 'minTime', 'maxTime', 'Preceding Token', 'Following Token', 'isWordInitial', 'Containing Word', 'Phones Per Second'] + targets
+    fieldname = ['phone', 'minTime', 'maxTime', 'Preceding Token', 'Following Token', 'isWordInitial', 'Containing Word', 'Phones Per Second', 'Phone Index'] + targets
     dictWriter = csv.DictWriter(f, fieldnames=fieldname)
     dictWriter.writeheader()
     UID = 0
@@ -141,11 +141,10 @@ def getIsolatedTokens(filepath, csvfilepath, tgout):
                 'Following Token' : following_token,
                 'isWordInitial' : str(isWordInitial),
                 'Containing Word' : str(tg[2][word_index]),
-                'Phones Per Second' : speech_rate
+                'Phones Per Second' : speech_rate,
+                'Phone Index' : target_counts[currentMark]
             })
-            UID += 1
-            if currentMark in target_counts:
-                target_counts[currentMark] += 1
+            target_counts[currentMark] += 1
 
     dictWriter.writerow(target_counts)
 

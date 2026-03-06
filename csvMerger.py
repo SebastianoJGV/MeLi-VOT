@@ -68,3 +68,4 @@ def process_and_tally_csvs(source_directory, output_file):
 
 # Execute
 process_and_tally_csvs('/mnt/7dcb7dc5-1dac-4ad3-bf5b-02dbda1356ee/School Stuff/MeLi/All Mandarin CSVs', 'final_consolidated_man_data.csv')
+process_and_tally_csvs('/mnt/7dcb7dc5-1dac-4ad3-bf5b-02dbda1356ee/School Stuff/MeLi/All English CSVs', 'final_consolidated_eng_data.csv')

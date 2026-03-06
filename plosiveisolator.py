@@ -116,13 +116,13 @@ def getIsolatedTokens(filepath, csvfilepath, tgout):
     dictWriter.writeheader()
     UID = 0
 
-    for x in tqdm(range(len(tgPhones)), desc="Analyzing Tiers", leave=False):
+    for x in range(len(tgPhones)):
         currentMark = tgPhones[x].mark
         isWordInitial = False
         if currentMark in targets:
             word_index = getContainingWord(tgPhones[x], tgWords)
-            print(tgWords[word_index])
-            print('proper ' + tgPhones[x].mark + ' found')
+            #print(tgWords[word_index])
+            #print('proper ' + tgPhones[x].mark + ' found')
             kept_intervals.append(textgrid.Interval(tgPhones[x].minTime, tgPhones[x].maxTime, tgPhones[x].mark)) # Add interval with intervocalic target
             if tgPhones[x].minTime == tgWords[word_index].minTime:
                 isWordInitial = True
@@ -176,7 +176,7 @@ print(tgout)
 
 output_base = "/home/seb/Documents/UBC/UBC Coding Environment/Projects/Suyuan MeLi VOT/Output"
 
-for n in range(len(tg_input_df)):
+for n in tqdm(range(len(tg_input_df)), desc="Analyzing Tiers", leave=False):
     # Combines the directory path, the filename, and the extension dynamically
     filepath = os.path.join(tg_input_df["dirname"][n], tg_input_df["barename"][n] + tg_input_df["ext"][n])
     

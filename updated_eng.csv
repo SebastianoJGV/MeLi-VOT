@@ -1,4 +1,4 @@
-Source_File,phone,minTime,maxTime,Preceding Token,Following Token,isWordInitial,Containing Word,Phones Per Second,Phone Index,K,G,B,P,D,T,ʈ,k,g,b,p,d,t,DH,TH,0.03900000000000001,predPOS,VOT,VOT Type
+Source_File,phone,minTime,maxTime,Preceding Token,Following Token,isWordInitial,Containing Word,Phones Per Second,Phone Index,K,G,B,P,D,T,ʈ,k,g,b,p,d,t,DH,TH,0.03900000000000001,predPOS,VOT,VOT_Type
 M98B_eng_isolated.csv,G,23.81,23.91,Z,R,True,"Interval(23.81, 24.11, grow)",12.698412698412719,0,,,,,,,,,,,,,,,,0.045,predNEG
 M98B_eng_isolated.csv,DH,24.26,24.29,N,AH0,True,"Interval(24.26, 24.34, the)",11.355034065102213,0,,,,,,,,,,,,,,,,0.0050000000000000044,predPOS
 M98B_eng_isolated.csv,G,24.34,24.42,AH0,AA1,True,"Interval(24.34, 24.81, garden)",10.598031794095398,1,,,,,,,,,,,,,,,,0.0050000000000000044,predPOS

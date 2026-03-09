@@ -1,4 +1,4 @@
-Source_File,phone,minTime,maxTime,Preceding Token,Following Token,isWordInitial,Containing Word,Phones Per Second,Phone Index,K,G,B,P,D,T,ʈ,k,g,b,p,d,t,tsʰ,pʲ,tɕʰ,tɕ,ʈʂ,tʰ,kʰ,ʈʂʰ,pʷ,tʷ,ts,pʰ,kʷ,tʲ,tɕʷ,VOT,VOT Type
+Source_File,phone,minTime,maxTime,Preceding Token,Following Token,isWordInitial,Containing Word,Phones Per Second,Phone Index,K,G,B,P,D,T,ʈ,k,g,b,p,d,t,tsʰ,pʲ,tɕʰ,tɕ,ʈʂ,tʰ,kʰ,ʈʂʰ,pʷ,tʷ,ts,pʰ,kʷ,tʲ,tɕʷ,VOT,VOT_Type
 F03B_man_isolated.csv,tsʰ,27.13211,27.28211,n,aj˥˩,False,"Interval(26.90211, 27.41211, 饭菜)",11.6279069767442,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.005,predPOS
 F03B_man_isolated.csv,pʲ,27.67211,27.72211,ŋ,i˥,True,"Interval(27.67211, 28.21211, 冰箱)",10,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.02,predPOS
 F03B_man_isolated.csv,tɕʰ,29.65651,29.82651,n,i˥,True,"Interval(29.65651, 30.17651, 期间)",12.6126126126126,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.005,predPOS

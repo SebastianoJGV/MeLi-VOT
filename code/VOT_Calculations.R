@@ -1,7 +1,8 @@
 library(tidyverse)
+library(lme4)
 
-manData <- read_csv("Projects/Suyuan MeLi VOT/updated_man.csv")
-engData <- read_csv("Projects/Suyuan MeLi VOT/updated_eng.csv")
+manData <- read_csv("MeLi/Local code/updated_man.csv")
+engData <- read_csv("MeLi/Local code/updated_eng.csv")
 
 wordinitial_man <- filter(manData, as.character(isWordInitial) == TRUE)
 wordinitial_eng <- filter(engData, as.character(isWordInitial) == TRUE)
@@ -57,7 +58,7 @@ phones <- unique(sanitised_eng$phone)
 print(sanitised_eng)
     for (p in phones) {
       # Save to a file named 'phone_name.png'
-      ggsave(filename = paste0(p, ".png"))
+      #ggsave(filename = paste0(p, ".png"))
       
       # Plot the data (it won't show, but it will create the object)
       sanitised_eng %>% 
@@ -77,7 +78,7 @@ phones <- unique(sanitised_man$phone)
 print(sanitised_man)
     for (p in phones) {
       # Save to a file named 'phone_name.png'
-      ggsave(filename = paste0(p, ".png"))
+      #ggsave(filename = paste0(p, ".png"))
       
       # Plot the data (it won't show, but it will create the object)
       sanitised_eng %>% 
@@ -94,3 +95,18 @@ print(sanitised_man)
 # I could just take a ratio?
 # Divide VOT my phones per second, chart that output?
 # Other option is a linear mixed effect model
+eng_models <- sanitised_eng %>%
+    group_by(phone) %>%
+    nest() %>%
+    mutate(model = map(data, ~lmer(VOT ~ Phones_Per_Second + (1 | Source_File), data = .x)))
+print(eng_models)
+
+# eng_models$model[[7]]
+
+man_models <- sanitised_man %>%
+    group_by(phone) %>%
+    nest() %>%
+    mutate(model = map(data, ~lmer(VOT ~ Phones_Per_Second + (1 | Source_File), data = .x)))
+print(man_models)
+
+man_models$model[[1]]

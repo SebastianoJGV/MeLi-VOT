@@ -54,8 +54,14 @@ sanitised_eng %>%
     facet_wrap(~ phone, labeller = labeller(phone = ~ paste("Phone:", .))) + 
     theme_bw()
 
+sanitised_man %>%
+    ggplot(aes(x = VOT)) +
+    geom_density() +
+    facet_wrap(~ phone, labeller = labeller(phone = ~ paste("Phone:", .))) + 
+    theme_bw()
+
 phones <- unique(sanitised_eng$phone)
-print(sanitised_eng)
+#print(sanitised_eng)
     for (p in phones) {
       # Save to a file named 'phone_name.png'
       #ggsave(filename = paste0(p, ".png"))
@@ -68,14 +74,8 @@ print(sanitised_eng)
         theme_bw()
     }
 
-sanitised_man %>%
-    ggplot(aes(x = VOT)) +
-    geom_density() +
-    facet_wrap(~ phone, labeller = labeller(phone = ~ paste("Phone:", .))) + 
-    theme_bw()
-
 phones <- unique(sanitised_man$phone)
-print(sanitised_man)
+#print(sanitised_man)
     for (p in phones) {
       # Save to a file named 'phone_name.png'
       #ggsave(filename = paste0(p, ".png"))
@@ -99,7 +99,7 @@ eng_models <- sanitised_eng %>%
     group_by(phone) %>%
     nest() %>%
     mutate(model = map(data, ~lmer(VOT ~ Phones_Per_Second + (1 | Source_File), data = .x)))
-print(eng_models)
+#print(eng_models)
 
 # eng_models$model[[7]]
 
@@ -107,6 +107,31 @@ man_models <- sanitised_man %>%
     group_by(phone) %>%
     nest() %>%
     mutate(model = map(data, ~lmer(VOT ~ Phones_Per_Second + (1 | Source_File), data = .x)))
-print(man_models)
+#print(man_models)
 
-man_models$model[[1]]
+#man_models$model[[1]]
+
+#print(sanitised_man$Phones_Per_Second)
+binList <- c(0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 40)
+
+bins_man <- sanitised_man  %>%
+     mutate(PPS_bin = cut(Phones_Per_Second, breaks = binList)) 
+
+bins_man %>%
+    group_by(phone) %>%
+    ggplot(aes(x = PPS_bin, y = VOT)) +
+    geom_boxplot() +
+    facet_wrap(~ phone, labeller = labeller(phone = ~ paste("Phone:", .))) +  
+    theme_bw() 
+ggsave("man bins.png", width = 40, height = 40)
+
+bins_eng <- sanitised_eng  %>%
+     mutate(PPS_bin = cut(Phones_Per_Second, breaks = binList)) 
+
+bins_eng %>%
+    group_by(phone) %>%
+    ggplot(aes(x = PPS_bin, y = VOT)) +
+    geom_boxplot() + 
+    facet_wrap(~ phone, labeller = labeller(phone = ~ paste("Phone:", .))) + 
+    theme_bw() 
+ggsave("eng bins.png", width = 40, height = 40)

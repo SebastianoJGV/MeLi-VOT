@@ -23,7 +23,7 @@ def build_nested_dict(csv_file_path):
             if token not in nested_dict[speaker]:
                 nested_dict[speaker][token] = {}
             if index not in nested_dict[speaker][token]:
-                nested_dict[speaker][token][index] = i
+                nested_dict[speaker][token][index] = i + 1 # This is so that it skips the header row!
                 #print(f"adding row {i} to {index}")
             else:
                 # This should never happen
@@ -65,25 +65,7 @@ with open(man_csv_path, 'r', newline='', encoding='utf-8') as infile:
 
 #input('wait here')
 textgrid_directory_path = '/mnt/7dcb7dc5-1dac-4ad3-bf5b-02dbda1356ee/School Stuff/MeLi/Dr.VOT Output TextGrids'
-#with open(eng_csv_path, 'w', newline='', encoding='utf-8') as eng_out:
-#    with open(man_csv_path, 'w', newline='', encoding='utf-8') as man_out:
-#        input('wait here')
-#        eng_writer = csv.writer(eng_out)
-#        eng_reader = csv.reader(eng_out)
-#        man_writer = csv.writer(man_out)
-#        man_reader = csv.reader(man_out)#
-#
-#        new_eng_vot = []
-#        new_eng_types = []
-#        new_man_vot = []
-#        new_man_types = []
 
-        #for rownum in eng_reader:
-        #    new_eng_vot.append(0)
-        #    new_eng_types.append(0)
-        #for rownum in man_reader:
-        #    new_man_vot.append(0)
-        #    new_man_types.append(0)
 
 for root, dirs, files in tqdm(os.walk(textgrid_directory_path), desc="Analyzing Tiers", leave=False):
     for file in files:
@@ -123,13 +105,13 @@ for root, dirs, files in tqdm(os.walk(textgrid_directory_path), desc="Analyzing 
 #print(eng_old_rows[0])
 with open("updated_eng.csv", 'w', newline='', encoding='utf-8') as eng_out:
     eng_writer = csv.writer(eng_out)
-    eng_writer.writerow(eng_old_rows[0] + ["VOT", "VOT Type"])  # Add headers at the end
+    eng_writer.writerow(eng_old_rows[0] + ["VOT", "VOT_Type"])  # Add headers at the end
     for row in eng_old_rows[1:]:  # Skip header row
         eng_writer.writerow(row)
         #print(eng_old_rows[row])
 
 with open("updated_man.csv", 'w', newline='', encoding='utf-8') as man_out:
     man_writer = csv.writer(man_out)
-    man_writer.writerow(man_old_rows[0] + ["VOT", "VOT Type"])  # Add headers at the end
+    man_writer.writerow(man_old_rows[0] + ["VOT", "VOT_Type"])  # Add headers at the end
     for row in man_old_rows[1:]:  # Skip header row
         man_writer.writerow(row)

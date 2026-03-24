@@ -6,7 +6,7 @@ This code is built up by combining 3 different older projects, as such it is pre
 
 The project itself require Python 3.12, newest versions break some of the audio processing so make sure you're running this in Python 3.12. I recommend using [pyenv](https://github.com/pyenv/pyenv) for version management if you don't already have something in place.
 
-The codes are written with the goal of preparing audio for Dr.VOT, however Dr.VOT itself is abandonware that will not work outside the box!
+The codes are written with the goal of preparing audio for Dr.VOT, however Dr.VOT itself is abandonware that will not work out of the box! As such, I have hyperlinked to a fork of the project which will work out of the box below.
 
 ## Dr.VOT Setup
 The github page for my personal Dr.VOT fork can be found [here](https://github.com/SebastianoJGV/PersonalDr.VOTFork). If you don't have access it may give you a 404 error, reach out to me and I can add you as a contributor since its a private repository!

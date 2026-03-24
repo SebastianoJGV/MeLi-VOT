@@ -111,7 +111,7 @@ def getIsolatedTokens(filepath, csvfilepath, tgout):
 
     #input("Press Enter to continue to the next file...")
 
-    fieldname = ['phone', 'minTime', 'maxTime', 'Preceding Token', 'Following Token', 'isWordInitial', 'Containing Word', 'Phones Per Second', 'Phone Index'] + targets
+    fieldname = ['phone', 'minTime', 'maxTime', 'precedingToken', 'followingToken', 'isWordInitial', 'containingWord', 'phonesPerSecond', 'phoneIndex'] + targets
     dictWriter = csv.DictWriter(f, fieldnames=fieldname)
     dictWriter.writeheader()
     UID = 0
@@ -137,12 +137,12 @@ def getIsolatedTokens(filepath, csvfilepath, tgout):
                 'phone': str(tgPhones[x].mark), 
                 'minTime': str(tgPhones[x].minTime), 
                 'maxTime': str(tgPhones[x].maxTime),
-                'Preceding Token' : preceding_token,
-                'Following Token' : following_token,
+                'precedingToken' : preceding_token,
+                'followingToken' : following_token,
                 'isWordInitial' : str(isWordInitial),
-                'Containing Word' : str(tg[2][word_index]),
-                'Phones Per Second' : speech_rate,
-                'Phone Index' : target_counts[currentMark]
+                'containingWord' : str(tg[2][word_index]),
+                'phonesPerSecond' : speech_rate,
+                'phoneIndex' : target_counts[currentMark]
             })
             target_counts[currentMark] += 1
 

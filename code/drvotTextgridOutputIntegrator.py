@@ -15,7 +15,7 @@ def build_nested_dict(csv_file_path):
         for i, row in enumerate(rows[:-1]):
             speaker = row['Source_File'][0:4]
             token = row['phone']
-            index = row['Phone Index']
+            index = row['phoneIndex']
 
             # Build the nested structure
             if speaker not in nested_dict:

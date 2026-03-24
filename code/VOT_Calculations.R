@@ -98,7 +98,7 @@ phones <- unique(sanitised_man$phone)
 eng_models <- sanitised_eng %>%
     group_by(phone) %>%
     nest() %>%
-    mutate(model = map(data, ~lmer(VOT ~ Phones_Per_Second + (1 | Source_File), data = .x)))
+    mutate(model = map(data, ~lmer(VOT ~ phonesPerSecond + (1 | Source_File), data = .x)))
 #print(eng_models)
 
 # eng_models$model[[7]]
@@ -106,16 +106,16 @@ eng_models <- sanitised_eng %>%
 man_models <- sanitised_man %>%
     group_by(phone) %>%
     nest() %>%
-    mutate(model = map(data, ~lmer(VOT ~ Phones_Per_Second + (1 | Source_File), data = .x)))
+    mutate(model = map(data, ~lmer(VOT ~ phonesPerSecond + (1 | Source_File), data = .x)))
 #print(man_models)
 
 #man_models$model[[1]]
 
-#print(sanitised_man$Phones_Per_Second)
+#print(sanitised_man$phonesPerSecond)
 binList <- c(0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 40)
 
 bins_man <- sanitised_man  %>%
-     mutate(PPS_bin = cut(Phones_Per_Second, breaks = binList)) 
+     mutate(PPS_bin = cut(phonesPerSecond, breaks = binList)) 
 
 bins_man %>%
     group_by(phone) %>%
@@ -126,7 +126,7 @@ bins_man %>%
 ggsave("man bins.png", width = 40, height = 40)
 
 bins_eng <- sanitised_eng  %>%
-     mutate(PPS_bin = cut(Phones_Per_Second, breaks = binList)) 
+     mutate(PPS_bin = cut(phonesPerSecond, breaks = binList)) 
 
 bins_eng %>%
     group_by(phone) %>%

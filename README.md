@@ -9,16 +9,9 @@ The project itself require Python 3.12, newest versions break some of the audio 
 The codes are written with the goal of preparing audio for Dr.VOT, however Dr.VOT itself is abandonware that will not work outside the box!
 
 ## Dr.VOT Setup
-The github page for Dr.VOT can be found [here](https://github.com/MLSpeech/Dr.VOT?tab=readme-ov-file).
+The github page for my personal Dr.VOT fork can be found [here](https://github.com/SebastianoJGV/PersonalDr.VOTFork). If you don't have access it may give you a 404 error, reach out to me and I can add you as a contributor since its a private repository!
 
-You need Python 3.9 specifically for this, again I recommend using a `pyenv local 3.9` function to ensure the code is running within python 3.9.
-
-To install dependencies correctly, you will need to edit both the `Pipfile` and `requirements.txt` from Dr.VOT. 
-In the case of the `Pipfile` add in the line:
-`setuptools = "==68.0.0"`
-
-In the case of the `requirement.txt` file add in the line:
-`setuptools==68.0.0`
+You need Python 3.9 specifically for this, again I recommend using a `pyenv local 3.9` function once cd'd into your Dr.VOT installation to ensure the code is running within python 3.9.
 
 Here is the exact venv code I use to setup Dr.VOT personally, exclude the third line if you've already installed the requirements before
 
@@ -27,7 +20,7 @@ python3.9 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt 
 ```
-To run Dr.VOT once your input files have been placed in `Dr.VOT/Data/raw`, open your terminal and cd to your Dr.VOT installation, then run `./run_script.sh`. Depending on the installation `run_script.sh` may not have execute permissions, so add permissions based off of your OS if necessary.
+To run Dr.VOT once your input files have been placed in `Dr.VOT/Data/raw`, open your terminal and cd to your Dr.VOT installation, then run `./run_script.sh`. Depending on the installation `run_script.sh` may not have execute permissions, so add permissions based off of your OS if necessary. (`chmod +x ./run_script.sh`)
 
 This should fix the error package not found: boltons error that pops up if you don't have this specific version of setuptools installed.
 
